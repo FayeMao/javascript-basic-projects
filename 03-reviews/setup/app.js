@@ -44,41 +44,37 @@ let currentItem = 0;
 
 // load initial item
 window.addEventListener('DOMContentLoaded', function () {
-  const item = reviews[currentItem];
-  img.src = item.img;
-  author.textContent = item.name;
-  job.textContent = item.job;
-  info.textContent = item.text;
+  showPerson(currentItem);
 });
 
-// show person based on item
-function showPerson(person) {
+// Show person based on item
+const showPerson = (person) => {
   const item = reviews[person];
   img.src = item.img;
   author.textContent = item.name;
-  job.textContent = item.job;
+  job.txtContent = item.job;
   info.textContent = item.text;
-}
-// show next person
-nextBtn.addEventListener('click', function () {
+};
+
+// Show next person
+nextBtn.addEventListener('click', () => {
   currentItem++;
   if (currentItem > reviews.length - 1) {
     currentItem = 0;
   }
   showPerson(currentItem);
 });
-// show prev person
-prevBtn.addEventListener('click', function () {
+
+// Show previous person
+prevBtn.addEventListener('click', () => {
   currentItem--;
   if (currentItem < 0) {
     currentItem = reviews.length - 1;
   }
   showPerson(currentItem);
 });
-// show random person
-randomBtn.addEventListener('click', function () {
-  console.log('hello');
 
-  currentItem = Math.floor(Math.random() * reviews.length);
+randomBtn.addEventListener('click', () => {
+  currentItem = Math.floor(Math.random() * 4);
   showPerson(currentItem);
-});
+})
